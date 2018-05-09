@@ -1,4 +1,4 @@
-# Performance-analysis-es6
+# Performance-analysis
 Here do the analysis of es6/array methods map,reduce,filter,find vs for loop vs vs for each for basic operations manipulation 
 
 # **************** Reduce performace check ***************
