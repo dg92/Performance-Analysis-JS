@@ -1,5 +1,5 @@
-# Performance-analysis-es6
-Here do the analysis of es6/array methods map,reduce,filter,find vs for loop vs vs for each vs lodash methods for basic operations and heavy data manipulations
+# Performance-analysis
+Javascript array methods map,reduce,filter,find vs for loop vs vs for each vs lodash methods for basic operations and heavy data manipulations, to analyze the execution speed.
 
 # To run 
  1. Run npm install
@@ -29,4 +29,4 @@ Here do the analysis of es6/array methods map,reduce,filter,find vs for loop vs 
 3. for each: 0.033ms
 4. lodash find: 0.236ms
 
-# For large data set - result vary according to the size of data, the atomic opeation +,-,*,/.
+# For large data set - result vary according to the size of data, the atomic operations +,-,*,/.
