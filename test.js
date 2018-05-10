@@ -9,10 +9,6 @@ const posts = [
 let sum = 0;
 console.log('**************** Reduce performace check ***************')
 
-console.time('reduce');
-sum = posts.reduce((s, i)=> s+=i.upVotes,0);
-console.timeEnd('reduce')
-
 sum = 0;
 console.time('for loop');
 for(let i=0; i<posts.length; i++) {
@@ -26,6 +22,10 @@ posts.forEach(element => {
     sum += element.upVotes;
 });
 console.timeEnd('for each');
+
+console.time('reduce');
+sum = posts.reduce((s, i)=> s+=i.upVotes,0);
+console.timeEnd('reduce')
 
 console.log('**************** Map performace check ***************')
 let newArray = [];
