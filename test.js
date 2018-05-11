@@ -23,6 +23,7 @@ posts.forEach(element => {
 });
 console.timeEnd('for each');
 
+sum = 0;
 console.time('reduce');
 sum = posts.reduce((s, i)=> s+=i.upVotes,0);
 console.timeEnd('reduce')
