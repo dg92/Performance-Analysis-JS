@@ -9,10 +9,13 @@ Javascript array methods map,reduce,filter,find vs for loop vs vs for each vs lo
 
     
 # Results for small data set of array size 5 - 1000 
+![small_data_set_result](./small_data_set_result.png)
 
 # Results for mid data set of array size 3000 - 20000
+![mid_data_set_result](./mid_data_set_result.png)
 
 # Results for large data set of array size 50000 - 1000000
+![large_data_set_result](./large_data_set_result.png)
 
 # Note
     To test your own function create them in formulas file 
