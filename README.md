@@ -27,6 +27,7 @@ Javascript array methods map,reduce,filter,find vs for loop vs vs for each vs lo
 1. These results are computed using Node V8 v5.8.283.41
 2. These result does not consider the JIT, inline caching, hidden classes, deoptimizations, garbage collection, pretenuring etc.
 3. Result may vary as per env's.
+4. Red colour highlight in the above images is just for reference, will soon change.
 
 ### Discussion/Posts
 1. https://news.ycombinator.com/item?id=17050798
