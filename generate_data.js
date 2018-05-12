@@ -9,7 +9,7 @@ const max = process.argv[2] ? process.argv[2] : 100000;
 const posts = range(0, Number(max)).map((p, i) => {
     return {
         id: i,
-        votes: p+random(0, 500),
+        upvotes: p+random(0, 500),
         downvotes: p+random(0, 500),
         commentCount: random(0, 1000)
     }

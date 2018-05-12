@@ -21,8 +21,9 @@ function reducePerformance(posts) {
     console.log('*************** Reduce performace check ***************')
     const length = posts.length;
     let avg = 0;
+    
     console.time('js reduce');
-    avg = posts.reduce((avg, p) => avg+= (+p.downvotes+ +p.upvotes+ +p.commentCount)/3,0);
+    avg = posts.reduce((acc, p) => acc+= (+p.downvotes+ +p.upvotes+ +p.commentCount)/3,0);
     avg = avg/length;
     console.timeEnd('js reduce')
 
@@ -44,7 +45,7 @@ function reducePerformance(posts) {
 
     avg = 0;
     console.time('lodash reduce');
-    avg = reduce(posts, p => avg+= (+p.downvotes+ +p.upvotes+ +p.commentCount)/3,0);
+    avg = reduce(posts, (acc, p) => acc+= (+p.downvotes+ +p.upvotes+ +p.commentCount)/3,0);
     avg = avg/length;
     console.timeEnd('lodash reduce');
 }
@@ -54,30 +55,52 @@ function mapPerformance(posts) {
     console.log('*************** Map performace check ***************')
     const divider = random(1,300);
     const length = posts.length;
+    let newData = [];
+    
     console.time('js map');
-    posts.map(p => {
-        p.upvotes = (p.upvotes+p.commentCount)/divider;
-        return p;
+    newData = posts.map(p => {
+        return {
+            id: p.id,
+            upvotes: (+p.upvotes + +p.commentCount)/divider,
+            downvotes: p.downvotes,
+            commentCount: p.commentCount
+        };
     });
     console.timeEnd('js map')
-
+    
+    newData=[];
     console.time('for loop');
     for(i=0; i<length; i++) {
-        posts[i].upvotes = (+posts[i].upvotes + +posts[i].commentCount)/divider;
+        newData.push({
+            id: posts[i].id,
+            upvotes: (+posts[i].upvotes + +posts[i].commentCount)/divider,
+            downvotes: posts[i].downvotes,
+            commentCount: posts[i].commentCount
+        });
     }
     console.timeEnd('for loop');
 
+    newData=[];
     console.time('for each');
     posts.forEach(element => {
-        element.upvotes = (+element.upvotes + +element.commentCount)/divider;
+        newData.push({
+            id: element.id,
+            upvotes: (+element.upvotes + +element.commentCount)/divider,
+            downvotes: element.downvotes,
+            commentCount: element.commentCount
+        });
     });
     console.timeEnd('for each');
-
-    avg = 0;
+    
+    newData=[];
     console.time('lodash map');
-    avg = map(posts, p => {
-        p.upvotes = (p.upvotes+p.commentCount)/divider;
-        return p;
+    newData = map(posts, p => {
+        return {
+            id: p.id,
+            upvotes: (+p.upvotes + +p.commentCount)/divider,
+            downvotes: p.downvotes,
+            commentCount: p.commentCount
+        };
     })
     console.timeEnd('lodash map');
 }
@@ -87,14 +110,14 @@ function mapPerformance(posts) {
 // commentCounts*0.1) multiple by a weight and return  -> filter
 function filterPerformance(posts) {
     console.log('*************** Filter performace check ***************')
-    const fitlerValue = random(1,200);
+    const fitlerValue = random(1,50);
     const length = posts.length;
     let newData = [];
     
     console.time('js filter');
     newData = posts.filter(p => (+p.upvotes*0.2 + +p.downvotes*0.3 +p.commentCount*0.1)/3 > fitlerValue);
     console.timeEnd('js filter')
-
+    
     newData = [];
     console.time('for loop');
     for(i=0; i<length; i++) {
@@ -115,7 +138,7 @@ function filterPerformance(posts) {
 
     newData = [];
     console.time('lodash filter');
-    avg = filter(posts, p => (+p.upvotes*0.2 + +p.downvotes*0.3 +p.commentCount*0.1)/3 > fitlerValue);
+    newData = filter(posts, p => (+p.upvotes*0.2 + +p.downvotes*0.3 +p.commentCount*0.1)/3 > fitlerValue);
     console.timeEnd('lodash filter');
 }
 
@@ -123,16 +146,18 @@ function filterPerformance(posts) {
 // find the last post 
 function findPerformance(posts) {
     console.log('**************** Find performace check ***************')
-    let obj = {};
+    const randomFind = random(0, posts.length-1);
     const length = posts.length;
+
+    let obj = {};
     console.time('js find');
-    obj = posts.find(p => p.id == length);
+    obj = posts.find(p => p.id == randomFind);
     console.timeEnd('js find');
 
     obj = {};
     console.time('for');
     for(i=0; i<length; i++) {
-        if(posts[i].id == length) {
+        if(posts[i].id == randomFind) {
             obj = posts[i];
         }
     }
@@ -141,7 +166,7 @@ function findPerformance(posts) {
     obj = {};
     console.time('for each');
     posts.forEach(element => {
-        if(element.id === length) {
+        if(element.id == randomFind) {
             obj = element
         }
     });
@@ -149,6 +174,7 @@ function findPerformance(posts) {
     
     obj = {};
     console.time('lodash find');
-    find(posts, p => p.id === length)
+    obj = find(posts, p => p.id === randomFind)
     console.timeEnd('lodash find');
+    
 }
