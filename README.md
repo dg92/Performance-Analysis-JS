@@ -1,5 +1,5 @@
 # Performance-analysis
-Javascript array methods map,reduce,filter,find vs for loop vs vs for each vs lodash methods for basic operations and heavy data manipulations, to analyze the execution speed.
+Javascript array methods map,reduce,filter,find vs for loop vs vs for each vs lodash vs ramda methods for basic operations and heavy data manipulations, to analyze the execution speed.
 
 ### To run 
  1. Run npm install
@@ -19,9 +19,8 @@ Javascript array methods map,reduce,filter,find vs for loop vs vs for each vs lo
 ![large_data_set_result](./large_data_set_result.png)
 
 ### Coming soon
-1. Ramda.js test
-2. Caching (inline, warm) considerations
-3. GC considerations
+1. Caching (inline, warm) considerations
+2. GC considerations
 
 ### Note
 1. These results are computed using Node V8 v5.8.283.41
@@ -32,6 +31,3 @@ Javascript array methods map,reduce,filter,find vs for loop vs vs for each vs lo
 ### Discussion/Posts
 1. https://news.ycombinator.com/item?id=17050798
 2. https://medium.com/@ideepak.jsd/javascript-performance-test-for-vs-for-each-vs-map-reduce-filter-find-32c1113f19d7
-
-
-

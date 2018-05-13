@@ -1,7 +1,7 @@
 {
   "name": "performance-analysis",
   "version": "1.0.0",
-  "description": "Performance analysis repo for javascript function vs for loop vs for each vs lodash",
+  "description": "Performance analysis repo for javascript function vs for loop vs for each vs lodash vs ramda",
   "main": "test.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
