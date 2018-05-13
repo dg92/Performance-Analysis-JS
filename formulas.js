@@ -5,8 +5,9 @@ const {
     find,
     random
 } = require('lodash');
-let i = 0;
+const ramda = require('ramda');
 
+let i = 0;
 exports.checkPerformance = (posts) => {
     return Promise.all([
         reducePerformance(posts),
@@ -46,8 +47,15 @@ function reducePerformance(posts) {
     avg = 0;
     console.time('lodash reduce');
     avg = reduce(posts, (acc, p) => acc+= (+p.downvotes+ +p.upvotes+ +p.commentCount)/3,0);
+
     avg = avg/length;
     console.timeEnd('lodash reduce');
+    
+    avg = 0;
+    console.time('ramda reduce');
+    avg = ramda.reduce((acc, p) => acc+= (+p.downvotes+ +p.upvotes+ +p.commentCount)/3, 0, posts);
+    avg = avg/length;
+    console.timeEnd('ramda reduce');
 }
 
 // modified all upvotes, add commentCounts to upvotes and divde by random number -> map
@@ -103,6 +111,18 @@ function mapPerformance(posts) {
         };
     })
     console.timeEnd('lodash map');
+    
+    newData=[];
+    console.time('ramada map');
+    newData = ramda.map(p => {
+        return {
+            id: p.id,
+            upvotes: (+p.upvotes + +p.commentCount)/divider,
+            downvotes: p.downvotes,
+            commentCount: p.commentCount
+        };
+    }, posts);
+    console.timeEnd('ramada map');
 }
 
 
@@ -140,6 +160,12 @@ function filterPerformance(posts) {
     console.time('lodash filter');
     newData = filter(posts, p => (+p.upvotes*0.2 + +p.downvotes*0.3 +p.commentCount*0.1)/3 > fitlerValue);
     console.timeEnd('lodash filter');
+
+    newData = [];
+    console.time('ramda filter');
+    newData = ramda.filter(p => (+p.upvotes*0.2 + +p.downvotes*0.3 +p.commentCount*0.1)/3 > fitlerValue, posts);
+    console.timeEnd('ramda filter');
+    
 }
 
 
@@ -174,7 +200,11 @@ function findPerformance(posts) {
     
     obj = {};
     console.time('lodash find');
-    obj = find(posts, p => p.id === randomFind)
+    obj = find(posts, p => p.id === randomFind);
     console.timeEnd('lodash find');
     
+    obj = {};
+    console.time('ramda find');
+    obj = ramda.find(p => p.id === randomFind)(posts);
+    console.timeEnd('ramda find');
 }

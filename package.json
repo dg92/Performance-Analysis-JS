@@ -31,6 +31,7 @@
   },
   "homepage": "https://github.com/dg92/Performance-analysis-es6#readme",
   "dependencies": {
-    "lodash": "^4.17.10"
+    "lodash": "^4.17.10",
+    "ramda": "^0.25.0"
   }
 }
