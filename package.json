@@ -14,15 +14,17 @@
     "url": "git+https://github.com/dg92/Performance-analysis-es6.git"
   },
   "keywords": [
-    "Javascript",
-    "Lodash",
+    "javascript",
+    "lodash",
     "es6",
     "function",
     "map",
     "reduce",
     "filter",
     "find",
-    "performance"
+    "performance",
+    "ramda",
+    "benchmarking"
   ],
   "author": "Deepak gupta (ideepak.jsd@gmail.com)",
   "license": "ISC",

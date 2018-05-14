@@ -31,3 +31,5 @@ Javascript array methods map,reduce,filter,find vs for loop vs vs for each vs lo
 ### Discussion/Posts
 1. https://news.ycombinator.com/item?id=17050798
 2. https://medium.com/@ideepak.jsd/javascript-performance-test-for-vs-for-each-vs-map-reduce-filter-find-32c1113f19d7
+
+
