@@ -8,6 +8,7 @@ const {
 const ramda = require('ramda');
 
 let i = 0;
+
 exports.checkPerformance = (posts) => {
     return Promise.all([
         reducePerformance(posts),
@@ -20,7 +21,7 @@ exports.checkPerformance = (posts) => {
 // find the avg. of all downvotes, upvotes, commentCounts -> reduce
 function reducePerformance(posts) {
     console.log('*************** Reduce performace check ***************')
-    const length = posts.length;
+    let length = posts.length;
     let avg = 0;
     
     console.time('js reduce');
@@ -56,23 +57,27 @@ function reducePerformance(posts) {
     avg = ramda.reduce((acc, p) => acc+= (+p.downvotes+ +p.upvotes+ +p.commentCount)/3, 0, posts);
     avg = avg/length;
     console.timeEnd('ramda reduce');
+
+    // this for GC
+    avg = null;
+    length = null;
 }
 
 // modified all upvotes, add commentCounts to upvotes and divde by random number -> map
 function mapPerformance(posts) {
     console.log('*************** Map performace check ***************')
-    const divider = random(1,300);
-    const length = posts.length;
+    let divider = random(1,300);
+    let length = posts.length;
     let newData = [];
     
     console.time('js map');
-    newData = posts.map(p => {
-        return {
+    posts.map(p => {
+        newData.push({
             id: p.id,
             upvotes: (+p.upvotes + +p.commentCount)/divider,
             downvotes: p.downvotes,
             commentCount: p.commentCount
-        };
+        })
     });
     console.timeEnd('js map')
     
@@ -123,6 +128,11 @@ function mapPerformance(posts) {
         };
     }, posts);
     console.timeEnd('ramada map');
+    
+    // this is done for GC
+    divider = null;
+    length = null;
+    newData = null;
 }
 
 
@@ -130,8 +140,8 @@ function mapPerformance(posts) {
 // commentCounts*0.1) multiple by a weight and return  -> filter
 function filterPerformance(posts) {
     console.log('*************** Filter performace check ***************')
-    const fitlerValue = random(1,50);
-    const length = posts.length;
+    let fitlerValue = random(1,50);
+    let length = posts.length;
     let newData = [];
     
     console.time('js filter');
@@ -165,6 +175,11 @@ function filterPerformance(posts) {
     console.time('ramda filter');
     newData = ramda.filter(p => (+p.upvotes*0.2 + +p.downvotes*0.3 +p.commentCount*0.1)/3 > fitlerValue, posts);
     console.timeEnd('ramda filter');
+
+    // this is done for GC
+    fitlerValue = null;
+    length = null;
+    newData = null;
     
 }
 
@@ -172,8 +187,8 @@ function filterPerformance(posts) {
 // find the last post 
 function findPerformance(posts) {
     console.log('**************** Find performace check ***************')
-    const randomFind = random(0, posts.length-1);
-    const length = posts.length;
+    let length = posts.length;
+    let randomFind = posts[length-1];
 
     let obj = {};
     console.time('js find');
@@ -207,4 +222,10 @@ function findPerformance(posts) {
     console.time('ramda find');
     obj = ramda.find(p => p.id === randomFind)(posts);
     console.timeEnd('ramda find');
+
+    // this is done for GC
+    randomFind = null;
+    length = null;
+    obj = null;
+    i = null;
 }
