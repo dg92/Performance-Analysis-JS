@@ -1,5 +1,5 @@
 # Performance-analysis
-Javascript array methods map,reduce,filter,find vs for loop vs vs for each vs lodash methods for basic operations and heavy data manipulations, to analyze the execution speed.
+Javascript array methods map, reduce, filter, find vs for loop vs for each vs lodash methods for basic operations and heavy data manipulations, to analyze the execution speed.
 
 ### To run 
  1. Run npm install
