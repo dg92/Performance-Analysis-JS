@@ -18,7 +18,7 @@ exports.checkPerformance = (posts) => {
  
 // find the avg. of all downvotes, upvotes, commentCounts -> reduce
 function reducePerformance(posts) {
-    console.log('*************** Reduce performace check ***************')
+    console.log('*************** Reduce performance check ***************')
     const length = posts.length;
     let avg = 0;
     
@@ -52,7 +52,7 @@ function reducePerformance(posts) {
 
 // modified all upvotes, add commentCounts to upvotes and divde by random number -> map
 function mapPerformance(posts) {
-    console.log('*************** Map performace check ***************')
+    console.log('*************** Map performance check ***************')
     const divider = random(1,300);
     const length = posts.length;
     let newData = [];
@@ -109,7 +109,7 @@ function mapPerformance(posts) {
 // filter array with object that has an avg of (downvotes * 0.3, upvotes * 0.2,
 // commentCounts*0.1) multiple by a weight and return  -> filter
 function filterPerformance(posts) {
-    console.log('*************** Filter performace check ***************')
+    console.log('*************** Filter performance check ***************')
     const fitlerValue = random(1,50);
     const length = posts.length;
     let newData = [];
@@ -145,7 +145,7 @@ function filterPerformance(posts) {
 
 // find the last post 
 function findPerformance(posts) {
-    console.log('**************** Find performace check ***************')
+    console.log('**************** Find performance check ***************')
     const randomFind = random(0, posts.length-1);
     const length = posts.length;
 
