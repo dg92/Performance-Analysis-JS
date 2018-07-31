@@ -1,28 +1,33 @@
 {
   "name": "performance-analysis",
   "version": "1.0.0",
-  "description": "Performance analysis repo for javascript function vs for loop vs for each vs lodash",
+  "description": "Performance analysis repo for javascript function vs for loop vs for each vs for of vs for in vs lodash vs ramda",
   "main": "test.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "t:l": "node test_large_data_set.js",
     "t:s": "node test_small_data_set.js",
-    "seed": "node generate_data.js"
+    "seed": "node generate_data.js",
+    "c:r": "node warm_cache_generate_result.js" 
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dg92/Performance-analysis-es6.git"
   },
   "keywords": [
-    "Javascript",
-    "Lodash",
+    "javascript",
+    "lodash",
     "es6",
     "function",
     "map",
     "reduce",
     "filter",
     "find",
-    "performance"
+    "performance",
+    "ramda",
+    "benchmarking",
+    "forin",
+    "forof"
   ],
   "author": "Deepak gupta (ideepak.jsd@gmail.com)",
   "license": "ISC",
@@ -31,6 +36,7 @@
   },
   "homepage": "https://github.com/dg92/Performance-analysis-es6#readme",
   "dependencies": {
-    "lodash": "^4.17.10"
+    "lodash": "^4.17.10",
+    "ramda": "^0.25.0"
   }
 }
