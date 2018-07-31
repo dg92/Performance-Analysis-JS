@@ -187,8 +187,8 @@ function filterPerformance(posts) {
 // find the last post 
 function findPerformance(posts) {
     console.log('**************** Find performance check ***************')
-    let randomFind = posts[length-1];
     let length = posts.length;
+    let randomFind = posts[length-1];
 
     let obj = {};
     console.time('js find');
