@@ -192,13 +192,13 @@ function findPerformance(posts) {
 
     let obj = {};
     console.time('js find');
-    obj = posts.find(p => p.id == randomFind);
+    obj = posts.find(p => p.id === randomFind);
     console.timeEnd('js find');
 
     obj = {};
     console.time('for');
     for(i=0; i<length; i++) {
-        if(posts[i].id == randomFind) {
+        if(posts[i].id === randomFind) {
             obj = posts[i];
         }
     }
@@ -207,8 +207,8 @@ function findPerformance(posts) {
     obj = {};
     console.time('for each');
     posts.forEach(element => {
-        if(element.id == randomFind) {
-            obj = element
+        if(element.id === randomFind) {
+            obj = element;
         }
     });
     console.timeEnd('for each');
