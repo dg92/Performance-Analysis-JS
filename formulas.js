@@ -118,7 +118,7 @@ function mapPerformance(posts) {
     console.timeEnd('lodash map');
     
     newData=[];
-    console.time('ramada map');
+    console.time('ramda map');
     newData = ramda.map(p => {
         return {
             id: p.id,
@@ -127,7 +127,7 @@ function mapPerformance(posts) {
             commentCount: p.commentCount
         };
     }, posts);
-    console.timeEnd('ramada map');
+    console.timeEnd('ramda map');
     
     // this is done for GC
     divider = null;
