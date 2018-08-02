@@ -20,7 +20,7 @@ exports.checkPerformance = (posts) => {
  
 // find the avg. of all downvotes, upvotes, commentCounts -> reduce
 function reducePerformance(posts) {
-    console.log('*************** Reduce performace check ***************')
+    console.log('*************** Reduce performance check ***************')
     let length = posts.length;
     let avg = 0;
     
@@ -65,7 +65,7 @@ function reducePerformance(posts) {
 
 // modified all upvotes, add commentCounts to upvotes and divde by random number -> map
 function mapPerformance(posts) {
-    console.log('*************** Map performace check ***************')
+    console.log('*************** Map performance check ***************')
     let divider = random(1,300);
     let length = posts.length;
     let newData = [];
@@ -118,7 +118,7 @@ function mapPerformance(posts) {
     console.timeEnd('lodash map');
     
     newData=[];
-    console.time('ramada map');
+    console.time('ramda map');
     newData = ramda.map(p => {
         return {
             id: p.id,
@@ -127,7 +127,7 @@ function mapPerformance(posts) {
             commentCount: p.commentCount
         };
     }, posts);
-    console.timeEnd('ramada map');
+    console.timeEnd('ramda map');
     
     // this is done for GC
     divider = null;
@@ -139,7 +139,7 @@ function mapPerformance(posts) {
 // filter array with object that has an avg of (downvotes * 0.3, upvotes * 0.2,
 // commentCounts*0.1) multiple by a weight and return  -> filter
 function filterPerformance(posts) {
-    console.log('*************** Filter performace check ***************')
+    console.log('*************** Filter performance check ***************')
     let fitlerValue = random(1,50);
     let length = posts.length;
     let newData = [];
@@ -186,19 +186,19 @@ function filterPerformance(posts) {
 
 // find the last post 
 function findPerformance(posts) {
-    console.log('**************** Find performace check ***************')
+    console.log('**************** Find performance check ***************')
     let length = posts.length;
     let randomFind = posts[length-1];
 
     let obj = {};
     console.time('js find');
-    obj = posts.find(p => p.id == randomFind);
+    obj = posts.find(p => p.id === randomFind);
     console.timeEnd('js find');
 
     obj = {};
     console.time('for');
     for(i=0; i<length; i++) {
-        if(posts[i].id == randomFind) {
+        if(posts[i].id === randomFind) {
             obj = posts[i];
         }
     }
@@ -207,8 +207,8 @@ function findPerformance(posts) {
     obj = {};
     console.time('for each');
     posts.forEach(element => {
-        if(element.id == randomFind) {
-            obj = element
+        if(element.id === randomFind) {
+            obj = element;
         }
     });
     console.timeEnd('for each');
