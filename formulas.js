@@ -36,6 +36,14 @@ function reducePerformance(posts) {
     console.timeEnd('for loop');
 
     avg = 0;
+    console.time('for of loop');
+    for(post of posts) {
+        avg += (+post.upvotes + +post.downvotes + +post.commentCount)/3;
+    }
+    avg = avg/length;
+    console.timeEnd('for of loop');
+
+    avg = 0;
     console.time('for each');
     posts.forEach(element => {
         avg += (+element.upvotes + +element.downvotes + +element.commentCount)/3;
@@ -79,6 +87,18 @@ function mapPerformance(posts) {
         });
     }
     console.timeEnd('for loop');
+
+    newData=[];
+    console.time('for of loop');
+    for (p of posts) {
+        newData.push({
+            id: p.id,
+            upvotes: (+p.upvotes + +p.commentCount)/divider,
+            downvotes: p.downvotes,
+            commentCount: p.commentCount
+        });
+    }
+    console.timeEnd('for of loop');
 
     newData=[];
     console.time('for each');
@@ -128,6 +148,15 @@ function filterPerformance(posts) {
     console.timeEnd('for loop');
 
     newData = [];
+    console.time('for of loop');
+    for(p of posts) {
+        if((+p.upvotes*0.2 + +p.downvotes*0.3 + +p.commentCount*0.1)/3 > fitlerValue) {
+            newData.push(p);
+        }
+    }
+    console.timeEnd('for of loop');
+
+    newData = [];
     console.time('for each');
     posts.forEach(element => {
         if((+element.upvotes*0.2 + +element.downvotes*0.3 + +element.commentCount*0.1)/3 > fitlerValue) {
@@ -162,6 +191,15 @@ function findPerformance(posts) {
         }
     }
     console.timeEnd('for');
+
+    obj = {};
+    console.time('for of');
+    for(p of posts) {
+        if(p.id == randomFind) {
+            obj = p;
+        }
+    }
+    console.timeEnd('for of');
 
     obj = {};
     console.time('for each');
